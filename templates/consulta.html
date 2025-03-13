@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+        <div class="titulo">
+            <span class="sm-icone">
+                <i class="fa-solid fa-money-check"></i>
+            </span>
+            <span class="sm-titulo">
+                Consultar Saldo
+            </span>
+        </div>
+        
+        <form method="POST" class="mt-3">
+            <div class="mb-3">
+                <label for="numero_cartao" class="form-label">Número do Cartão:</label>
+                <input type="text" id="numero_cartao" name="numero_cartao" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Consultar</button>
+        </form>
+
+        {% if resultado %}
+            <div class="alert alert-info mt-3 text-center">
+                {{ resultado }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

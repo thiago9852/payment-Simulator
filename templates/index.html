@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card p-4 shadow-lg w-75">
+
+            <div class="titulo">
+                <span class="sm-icone">
+                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                </span>
+                <span class="sm-titulo">
+                    Simulador de Pagamentos
+                </span>
+            </div>
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="numero_cartao" class="form-label"><i class="fa-solid fa-credit-card"></i> Número do Cartão</label>
+                    <input type="text" class="form-control" name="numero_cartao" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="valor" class="form-label"><i class="fa-solid fa-dollar-sign"></i> Valor da Compra (R$)</label>
+                    <input type="number" class="form-control" name="valor" step="0.01" required>
+                </div>
+
+                <div class="botoes-acao d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success">Pagar</button>
+                </div>
+            </form>
+
+            {% if resultado %}
+                <div class="alert mt-4 text-center {% if 'APROVADO' in resultado %}alert-success{% else %}alert-danger{% endif %}">
+                    {{ resultado }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
